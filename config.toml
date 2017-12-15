@@ -1,13 +1,13 @@
 baseURL = "http://example.com/"
 languageCode = "en-us"
-title = "Minimal"
+title = "Lauren's Data Science Blog"
 theme = "minimal"
 disqusShortname = "username" # delete this to disable disqus comments
 
 [params]
-    author = "Calin Tataru"
+    author = "Lauren Abbott"
     description = "Personal blog theme powered by Hugo"
-    githubUsername = "#"
+    githubUsername = "labbot96"
     accent = "red"
     showBorder = true
     backgroundColor = "white"
@@ -40,22 +40,7 @@ disqusShortname = "username" # delete this to disable disqus comments
     name = "envelope-o"
     weight = 1
 
-[[menu.icon]]
-    url = "https://github.com/username/"
-    name = "github"
-    weight = 2
 
-[[menu.icon]]
-    url = "https://twitter.com/username/"
-    name = "twitter"
-    weight = 3
 
-[[menu.icon]]
-    url = "https://www.linkedin.com/in/username/"
-    name = "linkedin"
-    weight = 4
 
-[[menu.icon]]
-    url = "https://www.stackoverflow.com/username/"
-    name = "stack-overflow"
-    weight = 5
+
