@@ -1,0 +1,27 @@
+---
+title: "Time Series"
+author: "Lauren Abbott"
+date: "December 15, 2017"
+output: html_document
+---
+
+The third way we can visualize data is with Time Series:
+
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+```{r}
+query<-"select yearID, HR from Batting
+where playerID='ruthba01'"
+
+result<-sqldf(query)
+
+ggplot()+
+  geom_point(data=result,aes(x=yearID,y=HR))+
+  geom_line(data=result,aes(x=yearID,y=HR))+
+  ggtitle("Ruth's Homeruns Through the Years")+
+  xlab("year")+
+  ylab("Homeruns")
+  ```
