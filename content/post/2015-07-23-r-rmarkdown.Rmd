@@ -1,37 +1,36 @@
 ---
-title: "Hello R Markdown"
-author: "Frida Gomam"
+title: "Barplots"
+author: "Lauren Abbott"
 date: 2015-07-23T21:13:14-05:00
 categories: ["R"]
-tags: ["R Markdown", "plot", "regression"]
+tags: ["R Markdown"]
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(collapse = TRUE)
+i will show how to make a barplot in r studio
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
 ```
 
-# R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+This is the query that we need in order to get the data on total homeruns for MLB teams in 1980!
 
-You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
-fit <- lm(dist ~ speed, data = cars)
-fit
+```{r}
+query<-"SELECT name,HR FROM Teams WHERE yearID=1980 ORDER BY HR "
+result<-sqldf(query)
+
+result$name<-factor(result$name,levels=result$name)
 ```
 
-# Including Plots
+Now it’s time to add our own personal touch to our bar plot! Lets give it a title with labels on the X and Y axis!
 
-You can also embed plots. See Figure \@ref(fig:pie) for example:
-
-```{r pie, fig.cap='A fancy pie chart.', tidy=FALSE}
-par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c('Sky', 'Sunny side of pyramid', 'Shady side of pyramid'),
-  col = c('#0292D8', '#F7EA39', '#C4B632'),
-  init.angle = -50, border = NA
-)
+```{r}
+ggplot()+
+  geom_bar(data=result,aes(x=name,y=HR),stat='identity')+
+  coord_flip()+
+  ggtitle("1980 Team Homerun Totals")+
+  xlab("Team Name")+
+  ylab("Homeruns")
 ```
+
